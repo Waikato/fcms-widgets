@@ -8,6 +8,12 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
+  <parent>
+    <groupId>org.sonatype.oss</groupId>
+    <artifactId>oss-parent</artifactId>
+    <version>7</version>
+  </parent>
+
   <name>fcms-widgets</name>
   <description>Small collection of useful Java widgets.</description>
   <organization>
@@ -71,10 +77,55 @@
     </dependency>
   </dependencies>
 
+  <profiles>
+    <profile>
+      <id>release-sign-artifacts</id>
+      <activation>
+        <property>
+          <name>performRelease</name>
+          <value>true</value>
+        </property>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <version>1.1</version>
+            <executions>
+              <execution>
+                <id>sign-artifacts</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>sign</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <profile>
+      <!-- used for skipping tests -->
+      <id>no-tests</id>
+      <properties>
+        <skipTests>true</skipTests>
+      </properties>
+    </profile>
+  </profiles>
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
   </properties>
+
+  <scm>
+    <connection>scm:git:https://github.com/waikato/fcms-widgets</connection>
+    <developerConnection>scm:git:https://github.com/waikato/fcms-widgets</developerConnection>
+    <url>https://github.com/waikato/fcms-widgets</url>
+    <tag>HEAD</tag>
+  </scm>
 
   <build>
     <pluginManagement>
@@ -88,6 +139,26 @@
             <target>1.8</target>
           </configuration>
         </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-release-plugin</artifactId>
+          <version>2.5.1</version>
+          <configuration>
+            <useReleaseProfile>false</useReleaseProfile>
+          </configuration>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <version>2.10.3</version>
+          <configuration>
+            <show>protected</show>
+            <nohelp>true</nohelp>
+            <additionalparam>-Xdoclint:none</additionalparam>
+          </configuration>
+        </plugin>
       </plugins>
     </pluginManagement>
 
@@ -96,6 +167,33 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
         <version>2.3.2</version>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <version>2.1.2</version>
+        <executions>
+          <execution>
+            <id>attach-sources</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>attach-javadocs</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>
