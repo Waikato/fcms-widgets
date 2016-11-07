@@ -146,6 +146,9 @@
           <version>2.5.1</version>
           <configuration>
             <useReleaseProfile>false</useReleaseProfile>
+            <localCheckout>true</localCheckout>
+            <pushChanges>true</pushChanges>
+            <commitByProject>true</commitByProject>
           </configuration>
         </plugin>
 
