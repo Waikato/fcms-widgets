@@ -58,13 +58,6 @@
     </dependency>
 
     <dependency>
-      <groupId>de.intarsys.opensource</groupId>
-      <artifactId>jPodRenderer</artifactId>
-      <version>5.5.1</version>
-      <type>jar</type>
-    </dependency>
-
-    <dependency>
       <groupId>com.github.fracpete</groupId>
       <artifactId>jfilechooser-bookmarks</artifactId>
       <version>0.1.5</version>
