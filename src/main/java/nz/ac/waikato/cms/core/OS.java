@@ -15,7 +15,7 @@
 
 /**
  * OS.java
- * Copyright (C) 2011-2015 University of Waikato, Hamilton, New Zealand
+ * Copyright (C) 2011-2017 University of Waikato, Hamilton, New Zealand
  */
 package nz.ac.waikato.cms.core;
 
@@ -33,6 +33,12 @@ public class OS {
   /** whether the OS is Mac. */
   protected static Boolean m_IsMac;
 
+  /** whether the OS is Linux. */
+  protected static Boolean m_IsLinux;
+
+  /** whether the OS is Android. */
+  protected static Boolean m_IsAndroid;
+
   /**
    * Checks whether the operating system is Windows.
    *
@@ -43,7 +49,7 @@ public class OS {
 
     if (m_IsWindows == null) {
       os          = System.getProperty("os.name").toLowerCase();
-      m_IsWindows = (os.indexOf("windows") > -1);
+      m_IsWindows = os.contains("windows");
     }
 
     return m_IsWindows;
@@ -63,6 +69,33 @@ public class OS {
     }
 
     return m_IsMac;
+  }
+
+  /**
+   * Checks whether the operating system is Linux (but not Android).
+   *
+   * @return		true if the OS is Linux flavor (but not Android)
+   */
+  public synchronized static boolean isLinux() {
+    if (m_IsLinux == null)
+      m_IsLinux = System.getProperty("os.name").toLowerCase().startsWith("linux") && !isAndroid();
+
+    return m_IsLinux;
+  }
+
+  /**
+   * Checks whether the operating system is Android.
+   *
+   * @return		true if the OS is Android flavor
+   */
+  public synchronized static boolean isAndroid() {
+    if (m_IsAndroid == null) {
+      m_IsAndroid = System.getProperty("java.vm.vendor").toLowerCase().contains("android")
+        || System.getProperty("java.vendor").toLowerCase().contains("android")
+        || System.getProperty("java.vendor.url").toLowerCase().contains("android");
+    }
+
+    return m_IsAndroid;
   }
 
   /**
