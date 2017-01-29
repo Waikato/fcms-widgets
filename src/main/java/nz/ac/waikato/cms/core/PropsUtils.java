@@ -15,7 +15,7 @@
 
 /**
  * PropsUtils.java
- * Copyright (C) 2015 University of Waikato, Hamilton, NZ
+ * Copyright (C) 2015-2017 University of Waikato, Hamilton, NZ
  */
 
 package nz.ac.waikato.cms.core;
@@ -28,7 +28,7 @@ import java.io.FileOutputStream;
 import java.util.Properties;
 
 /**
- * TODO: What class does.
+ * Helper class for properties files.
  *
  * @author FracPete (fracpete at waikato dot ac dot nz)
  * @version $Revision$
@@ -36,8 +36,7 @@ import java.util.Properties;
 public class PropsUtils {
 
   /**
-   * Loads the properties from the given file - not to be confused with
-   * <code>read(String)</code>.
+   * Loads the properties from the given file.
    *
    * @param props	the properties object to use
    * @param filename	the file to load the properties from
