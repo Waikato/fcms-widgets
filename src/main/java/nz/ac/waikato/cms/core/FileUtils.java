@@ -15,7 +15,7 @@
 
 /*
  * FileUtils.java
- * Copyright (C) 2009-2015 University of Waikato, Hamilton, New Zealand
+ * Copyright (C) 2009-2017 University of Waikato, Hamilton, New Zealand
  */
 
 package nz.ac.waikato.cms.core;
@@ -25,6 +25,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.Reader;
 import java.io.Writer;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Utility class for I/O related actions.
@@ -33,6 +35,12 @@ import java.io.Writer;
  * @version $Revision: 10824 $
  */
 public class FileUtils {
+
+  /** the maximum length for an extension. */
+  protected static Integer MAX_EXTENSION_LENGTH = 6;
+
+  /** the ignored extension suffixes. */
+  protected static String[] IGNORED_EXTENSION_SUFFIXES = new String[]{"7z", "bz2", "gz"};
 
   /**
    * Replaces the extension of the given file with the new one. Leave the
@@ -70,6 +78,94 @@ public class FileUtils {
 	result = file.substring(0, index);
     }
     
+    return result;
+  }
+
+  /**
+   * Returns the extension of the file, if any.
+   *
+   * @param file	the file to get the extension from
+   * @return		the extension (no dot), null if none available
+   */
+  public static String getExtension(File file) {
+    return getExtension(file.getAbsolutePath());
+  }
+
+  /**
+   * Returns the extension of the file, if any.
+   *
+   * @param filename	the file to get the extension from
+   * @return		the extension (no dot), null if none available
+   */
+  public static String getExtension(String filename) {
+    String[]	result;
+
+    result = getExtensions(filename);
+
+    if (result != null)
+      return result[0];
+    else
+      return null;
+  }
+
+  /**
+   * Returns the extensions of the file, if any.
+   * Returns "txt.gz" and "gz", for instance, for file "hello_world.txt.gz".
+   * The longer extension always comes first.
+   *
+   * @param file	the file to get the extensions from
+   * @return		the extensions (no dot), null if none available
+   */
+  public static String[] getExtensions(File file) {
+    return getExtensions(file.getAbsolutePath());
+  }
+
+  /**
+   * Returns the extensions of the file, if any.
+   * Removes ignored file extension suffixes like "gz" first.
+   *
+   * @param filename	the file to get the extensions from
+   * @return		the extensions (no dot), null if none available
+   */
+  public static String[] getExtensions(String filename) {
+    List<String> 	result;
+    int			pos;
+    int			posNext;
+    String		shortened;
+
+    if (filename.indexOf('.') == -1)
+      return null;
+
+    result = new ArrayList<>();
+
+    shortened = removeIgnoredExtensionSuffixes(filename);
+    pos       = filename.lastIndexOf('.', shortened.length() - 1);
+    result.add(filename.substring(pos + 1));
+
+    posNext = filename.lastIndexOf('.', pos - 1);
+    if ((posNext > -1) && (pos - posNext <= MAX_EXTENSION_LENGTH))
+      result.add(filename.substring(posNext + 1));
+
+    return result.toArray(new String[result.size()]);
+  }
+
+  /**
+   * Removes any ignored extension suffixes from the filename.
+   *
+   * @param filename	the filename to process
+   * @return		the processed filename
+   */
+  public static String removeIgnoredExtensionSuffixes(String filename) {
+    String	result;
+
+    result  = filename;
+
+    // remove ignored suffixes
+    for (String suffix: IGNORED_EXTENSION_SUFFIXES) {
+      if (result.endsWith("." + suffix))
+	result = result.substring(0, result.length() - suffix.length() - 1);
+    }
+
     return result;
   }
 
