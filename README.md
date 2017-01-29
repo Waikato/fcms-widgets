@@ -30,3 +30,14 @@ Small collection of useful Java widgets and utility classes.
   * `FileChooserPanel` - text field with associated button for selecting file
   * `SetupPanel` - ancestor for panels that load/save setups from/to properties files
   
+## Maven
+
+Add the following dependency to your `pom.xml`:
+
+```xml
+    <dependency>
+      <groupId>com.github.waikato</groupId>
+      <artifactId>fcms-widgets</artifactId>
+      <version>0.0.4</version>
+    </dependency>
+```
