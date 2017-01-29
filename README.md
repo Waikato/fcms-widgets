@@ -14,6 +14,8 @@ Small collection of useful Java widgets and utility classes.
 * Package `nz.ac.waikato.cms.gui.core`
 
   * `GUIHelper` - methods for determining parent components, loading images/icons, etc.
+  * `JListHelper` - methods for moving elements in `JList`
+  * `JTableHelper` - methods calculating column widhts of a `JTable`
   * `KeyUtils` - convenience methods for `KeyEvent` events
   * `MouseUtils` - convenience methods for `MouseEvent` events
 
