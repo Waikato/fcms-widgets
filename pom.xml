@@ -5,7 +5,7 @@
 
   <groupId>com.github.waikato</groupId>
   <artifactId>fcms-widgets</artifactId>
-  <version>0.0.4-SNAPSHOT</version>
+  <version>0.0.4</version>
   <packaging>jar</packaging>
 
   <parent>
@@ -128,7 +128,7 @@
     <connection>scm:git:https://github.com/waikato/fcms-widgets</connection>
     <developerConnection>scm:git:https://github.com/waikato/fcms-widgets</developerConnection>
     <url>https://github.com/waikato/fcms-widgets</url>
-    <tag>HEAD</tag>
+    <tag>fcms-widgets-0.0.4</tag>
   </scm>
 
   <build>
