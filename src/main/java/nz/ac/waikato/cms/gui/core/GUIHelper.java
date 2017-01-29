@@ -15,14 +15,17 @@
 
 /**
  * GUIHelper.java
- * Copyright (C) 2015 University of Waikato, Hamilton, NZ
+ * Copyright (C) 2015-2017 University of Waikato, Hamilton, NZ
  */
 
 package nz.ac.waikato.cms.gui.core;
 
+import nz.ac.waikato.cms.core.Utils;
+
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
+import javax.swing.JOptionPane;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dialog;
@@ -37,6 +40,9 @@ import java.awt.event.WindowListener;
  * @version $Revision$
  */
 public class GUIHelper {
+
+  /** the mnemonic character indicator. */
+  public final static char MNEMONIC_INDICATOR = '_';
 
   /**
    * Adds the path of the images directory to the name of the image.
@@ -234,5 +240,81 @@ public class GUIHelper {
 	}
       }
     }
+  }
+
+  /**
+   * Checks the caption whether an underscore "_" is present to indicate
+   * that the following character is to act as mnemonic.
+   *
+   * @param caption	the caption to analyze
+   * @return		true if an underscore is present
+   * @see		#MNEMONIC_INDICATOR
+   */
+  public static boolean hasMnemonic(String caption) {
+    return (caption.indexOf(MNEMONIC_INDICATOR) > -1);
+  }
+
+  /**
+   * Returns the mnemonic for this caption, preceded by an underscore "_".
+   *
+   * @param caption	the caption to extract
+   * @return		the extracted mnemonic, \0 if none available
+   * @see		#MNEMONIC_INDICATOR
+   */
+  public static char getMnemonic(String caption) {
+    int		pos;
+
+    pos = caption.indexOf(MNEMONIC_INDICATOR);
+    if ((pos > -1) && (pos < caption.length() - 1))
+      return caption.charAt(pos + 1);
+    else
+      return '\0';
+  }
+
+  /**
+   * Removes the mnemonic indicator in this caption.
+   *
+   * @param caption	the caption to process
+   * @return		the processed caption
+   * @see		#MNEMONIC_INDICATOR
+   */
+  public static String stripMnemonic(String caption) {
+    return caption.replace("" + MNEMONIC_INDICATOR, "");
+  }
+
+  /**
+   * Displays an error message with the default title "Error".
+   *
+   * @param parent	the parent, to make the dialog modal; can be null
+   * @param msg		the error message to display
+   * @param t 		the exception to append to the message
+   */
+  public static void showErrorMessage(Component parent, String msg, Throwable t) {
+    showErrorMessage(parent, msg + "\n" + Utils.throwableToString(t), "Error");
+  }
+
+  /**
+   * Displays an error message with the default title "Error".
+   *
+   * @param parent	the parent, to make the dialog modal; can be null
+   * @param msg		the error message to display
+   */
+  public static void showErrorMessage(Component parent, String msg) {
+    showErrorMessage(parent, msg, "Error");
+  }
+
+  /**
+   * Displays an error message.
+   *
+   * @param parent	the parent, to make the dialog modal; can be null
+   * @param msg		the error message to display
+   * @param title	the title of the error message
+   */
+  public static void showErrorMessage(Component parent, final String msg, String title) {
+    JOptionPane.showMessageDialog(
+      parent,
+      msg,
+      title,
+      JOptionPane.ERROR_MESSAGE);
   }
 }
