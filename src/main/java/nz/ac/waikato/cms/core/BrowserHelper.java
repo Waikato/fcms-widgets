@@ -15,7 +15,7 @@
 
 /*
  * BrowserHelper.java
- * Copyright (C) 2006-2015 University of Waikato, Hamilton, New Zealand
+ * Copyright (C) 2006-2017 University of Waikato, Hamilton, New Zealand
  */
 
 package nz.ac.waikato.cms.core;
@@ -74,8 +74,6 @@ public class BrowserHelper {
    */
   public static synchronized String openURL(Component parent, String url, boolean showDialog) {
     String	result;
-    String	defBrowser;
-    String[]	browsers;
 
     result = null;
 
