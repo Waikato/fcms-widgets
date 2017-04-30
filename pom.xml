@@ -77,7 +77,7 @@
     <dependency>
       <groupId>com.jidesoft</groupId>
       <artifactId>jide-oss</artifactId>
-      <version>3.6.11</version>
+      <version>3.6.18</version>
     </dependency>
   </dependencies>
 
