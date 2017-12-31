@@ -670,6 +670,7 @@ public class PropertiesParameterPanel
           }
           case STRING:
             final JTextField textfield = new JTextField();
+            textfield.setText(value.getProperty(key));
             textfield.setToolTipText(help);
             addProperty(key, label, textfield);
             break;
