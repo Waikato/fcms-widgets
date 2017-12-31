@@ -42,6 +42,32 @@ Small collection of useful Java widgets and utility classes.
   
 ## Examples
 
+### ApprovalDialog
+
+```java
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
+import nz.ac.waikato.cms.gui.core.ApprovalDialog;
+...
+// panel with content to display, e.g, a question
+JPanel panel = new JPanel(new BorderLayout());
+panel.add(new JLabel("Some question to ask?"), BorderLayout.CENTER);
+
+// configure and display dialog
+ApprovalDialog dialog = new ApprovalDialog((java.awt.Frame) null, true);
+dialog.setDefaultCloseOperation(ApprovalDialog.DISPOSE_ON_CLOSE);
+dialog.setTitle("Please confirm");
+dialog.getContentPane().add(panel, BorderLayout.CENTER);
+dialog.pack();
+dialog.setLocationRelativeTo(null);
+dialog.setVisible(true);
+if (dialog.getOption() == ApprovalDialog.APPROVE_OPTION)
+  System.out.println("Approved!");
+else
+  System.out.println("Nope...");
+```
+
 ### PropertiesParameterPanel
 
 ```java
@@ -87,17 +113,19 @@ props.setProperty("weka", "/some/where/weka.jar");
 panel.setProperties(props);
 
 // configure dialog and prompt user
-ApprovalDialog dialog = new ApprovalDialog((java.awt.Dialog) null);
+ApprovalDialog dialog = new ApprovalDialog((java.awt.Frame) null, true);
 dialog.setDefaultCloseOperation(ApprovalDialog.DISPOSE_ON_CLOSE);
 dialog.setTitle("Enter parameters");
 dialog.getContentPane().add(panel, BorderLayout.CENTER);
 dialog.pack();
-dialog.setLocationRelativeTo(dialog.getParent());
+dialog.setLocationRelativeTo(null);
 dialog.setVisible(true);
 
 // output user provided parameters
 if (dialog.getOption() == ApprovalDialog.APPROVE_OPTION)
   System.out.println(panel.getProperties());
+else
+  System.out.println("Canceled");
 ```
   
 ## Maven
