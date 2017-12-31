@@ -23,17 +23,22 @@ Small collection of useful Java widgets and utility classes.
 
 * Package `nz.ac.waikato.cms.gui.core`
 
+  * `ApprovalDialog` - dialog template for dialogs with Approve/Cancel/Discard buttons
+    (can be individually renamed, hidden/displayed)
+  * `BaseDialog` - dialog with 3-part initialization (`initialize`, `initGUI`, `finishInit`),
+    hook methods for show (`beforeShow`, `afterShow`) and hide (`beforeHide`, `afterHide`)
   * `BaseDirectoryChooser` - directory chooser with bookmarks panel  
   * `BaseFileChooser` - file chooser with bookmarks panel
   * `BaseFrame` - frame with 3-part initialization (`initialize`, `initGUI`, `finishInit`)
   * `BasePanel` - panel with 3-part initialization (`initialize`, `initGUI`, `finishInit`)
   * `BaseScrollPane` - scroll pane with sensible scroll units
+  * `DialogWithButtons` - dialog with panel at bottom of window for easy placement of buttons
   * `DirectoryChooserPanel` - text field with associated button for selecting directory
   * `FileChooserPanel` - text field with associated button for selecting file
-  * `SetupPanel` - ancestor for panels that load/save setups from/to properties files
   * `ParameterPanel` - panel for displaying multiple parameters to be entered
   * `PropertiesParameterPanel` - based on `ParameterPanel`, but backed by `java.util.Properties` 
     for getting/setting the parameters
+  * `SetupPanel` - ancestor for panels that load/save setups from/to properties files
   
 ## Maven
 
@@ -43,6 +48,6 @@ Add the following dependency to your `pom.xml`:
     <dependency>
       <groupId>com.github.waikato</groupId>
       <artifactId>fcms-widgets</artifactId>
-      <version>0.0.6</version>
+      <version>0.0.9</version>
     </dependency>
 ```
