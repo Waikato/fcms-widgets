@@ -40,6 +40,66 @@ Small collection of useful Java widgets and utility classes.
     for getting/setting the parameters
   * `SetupPanel` - ancestor for panels that load/save setups from/to properties files
   
+## Examples
+
+### PropertiesParameterPanel
+
+```java
+import nz.ac.waikato.cms.gui.core.ApprovalDialog;
+import nz.ac.waikato.cms.gui.core.GUIHelper;
+import nz.ac.waikato.cms.gui.core.PropertiesParameterPanel;
+import nz.ac.waikato.cms.gui.core.PropertiesParameterPanel.PropertyType;
+import java.util.Properties;
+...
+PropertiesParameterPanel panel = new PropertiesParameterPanel();
+
+// properties
+panel.addPropertyType("name", PropertyType.STRING);
+panel.setLabel("name", "New name");
+panel.setHelp("name", "The name for the environment");
+
+panel.addPropertyType("java", PropertyType.FILE);
+panel.setLabel("java", "Java executable");
+panel.setHelp("java", "System default is used when pointing to a directory");
+
+panel.addPropertyType("memory", PropertyType.STRING);
+panel.setLabel("memory", "Heap size");
+panel.setHelp("memory", "System default is used when empty");
+
+panel.addPropertyType("weka", PropertyType.FILE);
+panel.setLabel("weka", "Weka jar");
+panel.setHelp("weka", "The weka jar to use for the environment, cannot be empty");
+
+// define order of parameters
+panel.setPropertyOrder(new String[]{
+  "name",
+  "java",
+  "memory",
+  "weka",
+});
+
+// initial values
+Properties props = new Properties();
+props.setProperty("name", "coolname");
+props.setProperty("java", "/usr/bin/java");
+props.setProperty("memory", "4g");
+props.setProperty("weka", "/some/where/weka.jar");
+panel.setProperties(props);
+
+// configure dialog and prompt user
+ApprovalDialog dialog = new ApprovalDialog((java.awt.Dialog) null);
+dialog.setDefaultCloseOperation(ApprovalDialog.DISPOSE_ON_CLOSE);
+dialog.setTitle("Enter parameters");
+dialog.getContentPane().add(panel, BorderLayout.CENTER);
+dialog.pack();
+dialog.setLocationRelativeTo(dialog.getParent());
+dialog.setVisible(true);
+
+// output user provided parameters
+if (dialog.getOption() == ApprovalDialog.APPROVE_OPTION)
+  System.out.println(panel.getProperties());
+```
+  
 ## Maven
 
 Add the following dependency to your `pom.xml`:
@@ -48,6 +108,6 @@ Add the following dependency to your `pom.xml`:
     <dependency>
       <groupId>com.github.waikato</groupId>
       <artifactId>fcms-widgets</artifactId>
-      <version>0.0.9</version>
+      <version>0.0.10</version>
     </dependency>
 ```
