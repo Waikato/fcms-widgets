@@ -136,6 +136,6 @@ Add the following dependency to your `pom.xml`:
     <dependency>
       <groupId>com.github.waikato</groupId>
       <artifactId>fcms-widgets</artifactId>
-      <version>0.0.10</version>
+      <version>0.0.11</version>
     </dependency>
 ```
