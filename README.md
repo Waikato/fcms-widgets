@@ -31,6 +31,9 @@ Small collection of useful Java widgets and utility classes.
   * `DirectoryChooserPanel` - text field with associated button for selecting directory
   * `FileChooserPanel` - text field with associated button for selecting file
   * `SetupPanel` - ancestor for panels that load/save setups from/to properties files
+  * `ParameterPanel` - panel for displaying multiple parameters to be entered
+  * `PropertiesParameterPanel` - based on `ParameterPanel`, but backed by `java.util.Properties` 
+    for getting/setting the parameters
   
 ## Maven
 
