@@ -32,9 +32,14 @@ Small collection of useful Java widgets and utility classes.
   * `BaseFrame` - frame with 3-part initialization (`initialize`, `initGUI`, `finishInit`)
   * `BasePanel` - panel with 3-part initialization (`initialize`, `initGUI`, `finishInit`)
   * `BaseScrollPane` - scroll pane with sensible scroll units
+  * `BaseTextPane` - extended `javax.swing.JTextPane` making it easy to append lines with different fonts/colors
+  * `BaseTextPaneWithWordWrap` - extended `BaseTextPane` supporting word wrap
   * `DialogWithButtons` - dialog with panel at bottom of window for easy placement of buttons
   * `DirectoryChooserPanel` - text field with associated button for selecting directory
   * `FileChooserPanel` - text field with associated button for selecting file
+  * `FontChooser` - a chooser dialog for fonts
+  * `FontChooserPanel` - panel that allows selection of fonts via a `FontChooser` dialog
+  * `FontChooserPanelWithPreview` - previews the selected font with some sample text
   * `ParameterPanel` - panel for displaying multiple parameters to be entered
   * `PropertiesParameterPanel` - based on `ParameterPanel`, but backed by `java.util.Properties` 
     for getting/setting the parameters
