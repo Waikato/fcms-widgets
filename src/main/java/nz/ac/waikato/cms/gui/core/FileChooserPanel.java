@@ -15,7 +15,7 @@
 
 /*
  * FileChooserPanel.java
- * Copyright (C) 2008-2017 University of Waikato, Hamilton, New Zealand
+ * Copyright (C) 2008-2018 University of Waikato, Hamilton, New Zealand
  */
 
 package nz.ac.waikato.cms.gui.core;
@@ -29,7 +29,6 @@ import java.io.File;
  * button for bringing up a BaseFileChooser.
  *
  * @author  fracpete (fracpete at waikato dot ac dot nz)
- * @version $Revision: 14656 $
  */
 public class FileChooserPanel
   extends AbstractChooserPanel<File> {
@@ -116,7 +115,13 @@ public class FileChooserPanel
    */
   @Override
   protected String toString(File value) {
-    return value.getAbsolutePath();
+    String 	result;
+
+    result = value.getAbsolutePath();
+    if (result.equals(System.getProperty("user.dir")))
+      result = ".";
+
+    return result;
   }
 
   /**
