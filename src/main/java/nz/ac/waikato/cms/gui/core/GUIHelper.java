@@ -13,9 +13,9 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/**
+/*
  * GUIHelper.java
- * Copyright (C) 2015-2017 University of Waikato, Hamilton, NZ
+ * Copyright (C) 2015-2018 University of Waikato, Hamilton, NZ
  */
 
 package nz.ac.waikato.cms.gui.core;
@@ -37,7 +37,6 @@ import java.awt.event.WindowListener;
  * Helper class for GUI related stuff.
  *
  * @author FracPete (fracpete at waikato dot ac dot nz)
- * @version $Revision$
  */
 public class GUIHelper {
 
@@ -65,7 +64,7 @@ public class GUIHelper {
 
     filename = getImageFilename(name);
     if (filename != null)
-      return new ImageIcon(ClassLoader.getSystemClassLoader().getResource(filename));
+      return new ImageIcon(GUIHelper.class.getClassLoader().getResource(filename));
     else
       return null;
   }
