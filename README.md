@@ -34,12 +34,15 @@ Small collection of useful Java widgets and utility classes.
   * `BaseScrollPane` - scroll pane with sensible scroll units
   * `BaseTextPane` - extended `javax.swing.JTextPane` making it easy to append lines with different fonts/colors
   * `BaseTextPaneWithWordWrap` - extended `BaseTextPane` supporting word wrap
+  * `DetachablePanel` - meta-panel that can detach the content in a separate dialog (and then re-attach it again)
   * `DialogWithButtons` - dialog with panel at bottom of window for easy placement of buttons
   * `DirectoryChooserPanel` - text field with associated button for selecting directory
   * `FileChooserPanel` - text field with associated button for selecting file
   * `FontChooser` - a chooser dialog for fonts
   * `FontChooserPanel` - panel that allows selection of fonts via a `FontChooser` dialog
   * `FontChooserPanelWithPreview` - previews the selected font with some sample text
+  * `MultiPagePane` - pane that works like `javax.swing.JTabbedPane`, but lists the pages 
+    on the left-hand side (better use of space on widescreen monitors)
   * `ParameterPanel` - panel for displaying multiple parameters to be entered
   * `PropertiesParameterPanel` - based on `ParameterPanel`, but backed by `java.util.Properties` 
     for getting/setting the parameters
@@ -141,6 +144,6 @@ Add the following dependency to your `pom.xml`:
     <dependency>
       <groupId>com.github.waikato</groupId>
       <artifactId>fcms-widgets</artifactId>
-      <version>0.0.11</version>
+      <version>0.0.15</version>
     </dependency>
 ```
