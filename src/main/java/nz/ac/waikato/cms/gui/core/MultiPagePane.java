@@ -536,6 +536,8 @@ public class MultiPagePane
     m_PanelListButtons.add(m_ButtonUndo);
 
     m_ButtonAction = new JideSplitButton("...");
+    m_ButtonAction.setButtonStyle(JideButton.TOOLBOX_STYLE);
+    m_ButtonAction.setFont(getFont().deriveFont(Font.PLAIN));
     m_ButtonAction.setAlwaysDropdown(false);
     m_ButtonAction.setToolTipText("Additional actions");
     m_ButtonAction.setVisible(false);
@@ -581,6 +583,15 @@ public class MultiPagePane
    */
   public boolean isReadOnly() {
     return m_ReadOnly;
+  }
+
+  /**
+   * Returns the panel with the buttons.
+   *
+   * @return		the panel
+   */
+  public BasePanel getButtonPanel() {
+    return m_PanelListButtons;
   }
 
   /**
