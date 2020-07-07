@@ -15,19 +15,21 @@
 
 /*
  * MultiPagePane.java
- * Copyright (C) 2018-2020 University of Waikato, Hamilton, NZ
+ * Copyright (C) 2018-2019 University of Waikato, Hamilton, NZ
  */
 
 package nz.ac.waikato.cms.gui.core;
 
 import com.googlecode.jfilechooserbookmarks.event.RemoveItemsListener;
 import com.googlecode.jfilechooserbookmarks.gui.BaseList;
+import com.jidesoft.swing.JideButton;
+import com.jidesoft.swing.JideSplitButton;
 
+import javax.swing.Action;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JMenuItem;
@@ -381,19 +383,22 @@ public class MultiPagePane
   protected BasePanel m_PanelListButtons;
 
   /** the move up button. */
-  protected JButton m_ButtonUp;
+  protected JideButton m_ButtonUp;
 
   /** the move down button. */
-  protected JButton m_ButtonDown;
+  protected JideButton m_ButtonDown;
 
   /** the remove button. */
-  protected JButton m_ButtonRemove;
+  protected JideButton m_ButtonRemove;
 
   /** the remove all button. */
-  protected JButton m_ButtonRemoveAll;
+  protected JideButton m_ButtonRemoveAll;
 
   /** the undo button. */
-  protected JButton m_ButtonUndo;
+  protected JideButton m_ButtonUndo;
+
+  /** the action button. */
+  protected JideSplitButton m_ButtonAction;
 
   /** the content pane for the pages. */
   protected BasePanel m_PanelContent;
@@ -495,35 +500,48 @@ public class MultiPagePane
     m_PanelListButtons = new BasePanel(new FlowLayout(FlowLayout.LEFT));
     m_LeftPanel.add(m_PanelListButtons, BorderLayout.SOUTH);
 
-    m_ButtonUp = new JButton(GUIHelper.getIcon("arrow_up.gif"));
+    m_ButtonUp = new JideButton(GUIHelper.getIcon("arrow_up.gif"));
+    m_ButtonUp.setButtonStyle(JideButton.TOOLBOX_STYLE);
     m_ButtonUp.setFont(getFont().deriveFont(Font.PLAIN));
     m_ButtonUp.setToolTipText("Moves up selected");
     m_ButtonUp.addActionListener((ActionEvent e) -> moveUp());
     m_PanelListButtons.add(m_ButtonUp);
 
-    m_ButtonDown = new JButton(GUIHelper.getIcon("arrow_down.gif"));
+    m_ButtonDown = new JideButton(GUIHelper.getIcon("arrow_down.gif"));
+    m_ButtonDown.setButtonStyle(JideButton.TOOLBOX_STYLE);
     m_ButtonDown.setFont(getFont().deriveFont(Font.PLAIN));
     m_ButtonDown.setToolTipText("Moves down selected");
     m_ButtonDown.addActionListener((ActionEvent e) -> moveDown());
     m_PanelListButtons.add(m_ButtonDown);
 
-    m_ButtonRemove = new JButton(GUIHelper.getIcon("delete.gif"));
+    m_ButtonRemove = new JideButton(GUIHelper.getIcon("delete.gif"));
+    m_ButtonRemove.setButtonStyle(JideButton.TOOLBOX_STYLE);
     m_ButtonRemove.setFont(getFont().deriveFont(Font.PLAIN));
     m_ButtonRemove.setToolTipText("Removes currently selected");
     m_ButtonRemove.addActionListener((ActionEvent e) -> checkedRemoveSelectedPages());
     m_PanelListButtons.add(m_ButtonRemove);
 
-    m_ButtonRemoveAll = new JButton(GUIHelper.getIcon("delete_all.gif"));
+    m_ButtonRemoveAll = new JideButton(GUIHelper.getIcon("delete_all.gif"));
+    m_ButtonRemoveAll.setButtonStyle(JideButton.TOOLBOX_STYLE);
     m_ButtonRemoveAll.setFont(getFont().deriveFont(Font.PLAIN));
     m_ButtonRemoveAll.setToolTipText("Removes all");
     m_ButtonRemoveAll.addActionListener((ActionEvent e) -> checkedRemoveAllPages());
     m_PanelListButtons.add(m_ButtonRemoveAll);
 
-    m_ButtonUndo = new JButton(GUIHelper.getIcon("undo.gif"));
+    m_ButtonUndo = new JideButton(GUIHelper.getIcon("undo.gif"));
+    m_ButtonUndo.setButtonStyle(JideButton.TOOLBOX_STYLE);
     m_ButtonUndo.setFont(getFont().deriveFont(Font.PLAIN));
     m_ButtonUndo.setToolTipText("Undo removal");
     m_ButtonUndo.addActionListener((ActionEvent e) -> undoPageClose());
     m_PanelListButtons.add(m_ButtonUndo);
+
+    m_ButtonAction = new JideSplitButton("...");
+    m_ButtonAction.setButtonStyle(JideButton.TOOLBOX_STYLE);
+    m_ButtonAction.setFont(getFont().deriveFont(Font.PLAIN));
+    m_ButtonAction.setAlwaysDropdown(false);
+    m_ButtonAction.setToolTipText("Additional actions");
+    m_ButtonAction.setVisible(false);
+    m_PanelListButtons.add(m_ButtonAction);
 
     m_PanelContent = new BasePanel(new BorderLayout());
     m_SplitPane.setRightComponent(m_PanelContent);
@@ -1201,6 +1219,29 @@ public class MultiPagePane
     m_ButtonRemove.setEnabled(numSelected > 0);
     m_ButtonRemoveAll.setEnabled(getPageCount() > 0);
     m_ButtonUndo.setEnabled(canUndoPageClose());
+  }
+
+  /**
+   * Adds the action to the action button.
+   *
+   * @param action	the action to add
+   */
+  public void addAction(Action action) {
+    if (m_ButtonAction.getAction() == null)
+      m_ButtonAction.setAction(action);
+    else
+      m_ButtonAction.add(action);
+    m_ButtonAction.setVisible(true);
+  }
+
+  /**
+   * Adds the menu item to the action button.
+   *
+   * @param action	the item to add
+   */
+  public void addAction(JMenuItem action) {
+    m_ButtonAction.add(action);
+    m_ButtonAction.setVisible(true);
   }
 
   /**
