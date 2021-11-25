@@ -46,7 +46,7 @@
     <dependency>
       <groupId>com.github.fracpete</groupId>
       <artifactId>jfilechooser-bookmarks</artifactId>
-      <version>0.1.5</version>
+      <version>0.1.7</version>
     </dependency>
 
     <dependency>
@@ -100,8 +100,8 @@
   </properties>
 
   <scm>
-    <connection>scm:git:https://github.com/waikato/fcms-widgets</connection>
-    <developerConnection>scm:git:https://github.com/waikato/fcms-widgets</developerConnection>
+    <connection>scm:git:ssh://git@github.com/waikato/fcms-widgets</connection>
+    <developerConnection>scm:git:ssh://git@github.com/waikato/fcms-widgets</developerConnection>
     <url>https://github.com/waikato/fcms-widgets</url>
     <tag>HEAD</tag>
   </scm>
