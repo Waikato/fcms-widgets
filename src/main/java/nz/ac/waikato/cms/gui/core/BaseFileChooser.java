@@ -13,9 +13,9 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/**
+/*
  * BaseFileChooser.java
- * Copyright (C) 2015-2016 University of Waikato, Hamilton, NZ
+ * Copyright (C) 2015-2021 University of Waikato, Hamilton, NZ
  */
 
 package nz.ac.waikato.cms.gui.core;
@@ -30,7 +30,6 @@ import java.io.File;
  * FileChooser with a bookmarks panel.
  *
  * @author FracPete (fracpete at waikato dot ac dot nz)
- * @version $Revision$
  */
 public class BaseFileChooser
   extends JFileChooser {
@@ -98,6 +97,7 @@ public class BaseFileChooser
   @Override
   public int showDialog(Component parent, String approveButtonText) throws HeadlessException {
     m_PanelBookmarks.reload();
+    m_PanelBookmarks.updateButtons();
     return super.showDialog(parent, approveButtonText);
   }
 }

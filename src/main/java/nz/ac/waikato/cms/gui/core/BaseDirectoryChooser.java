@@ -15,7 +15,7 @@
 
 /*
  * BaseDirectoryChooser.java
- * Copyright (C) 2010-2016 University of Waikato, Hamilton, New Zealand
+ * Copyright (C) 2010-2021 University of Waikato, Hamilton, New Zealand
  */
 
 package nz.ac.waikato.cms.gui.core;
@@ -195,6 +195,7 @@ public class BaseDirectoryChooser
   @Override
   public int showDialog(Component parent, String approveButtonText) throws HeadlessException {
     m_PanelBookmarks.reload();
+    m_PanelBookmarks.updateButtons();
     return super.showDialog(parent, approveButtonText);
   }
 
