@@ -8,3 +8,4 @@ How to make a release
   ```
   
 * push all changes
+* update Maven artifact version in [README.md](README.md#maven)
