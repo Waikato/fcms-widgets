@@ -15,15 +15,13 @@
 
 /*
  * MultiPagePane.java
- * Copyright (C) 2018-2019 University of Waikato, Hamilton, NZ
+ * Copyright (C) 2018-2022 University of Waikato, Hamilton, NZ
  */
 
 package nz.ac.waikato.cms.gui.core;
 
 import com.googlecode.jfilechooserbookmarks.event.RemoveItemsListener;
 import com.googlecode.jfilechooserbookmarks.gui.BaseList;
-import com.jidesoft.swing.JideButton;
-import com.jidesoft.swing.JideSplitButton;
 
 import javax.swing.Action;
 import javax.swing.BorderFactory;
@@ -383,22 +381,22 @@ public class MultiPagePane
   protected BasePanel m_PanelListButtons;
 
   /** the move up button. */
-  protected JideButton m_ButtonUp;
+  protected BaseFlatButton m_ButtonUp;
 
   /** the move down button. */
-  protected JideButton m_ButtonDown;
+  protected BaseFlatButton m_ButtonDown;
 
   /** the remove button. */
-  protected JideButton m_ButtonRemove;
+  protected BaseFlatButton m_ButtonRemove;
 
   /** the remove all button. */
-  protected JideButton m_ButtonRemoveAll;
+  protected BaseFlatButton m_ButtonRemoveAll;
 
   /** the undo button. */
-  protected JideButton m_ButtonUndo;
+  protected BaseFlatButton m_ButtonUndo;
 
   /** the action button. */
-  protected JideSplitButton m_ButtonAction;
+  protected BaseSplitButton m_ButtonAction;
 
   /** the content pane for the pages. */
   protected BasePanel m_PanelContent;
@@ -500,43 +498,37 @@ public class MultiPagePane
     m_PanelListButtons = new BasePanel(new FlowLayout(FlowLayout.LEFT));
     m_LeftPanel.add(m_PanelListButtons, BorderLayout.SOUTH);
 
-    m_ButtonUp = new JideButton(GUIHelper.getIcon("arrow_up.gif"));
-    m_ButtonUp.setButtonStyle(JideButton.TOOLBOX_STYLE);
+    m_ButtonUp = new BaseFlatButton(GUIHelper.getIcon("arrow_up.gif"));
     m_ButtonUp.setFont(getFont().deriveFont(Font.PLAIN));
     m_ButtonUp.setToolTipText("Moves up selected");
     m_ButtonUp.addActionListener((ActionEvent e) -> moveUp());
     m_PanelListButtons.add(m_ButtonUp);
 
-    m_ButtonDown = new JideButton(GUIHelper.getIcon("arrow_down.gif"));
-    m_ButtonDown.setButtonStyle(JideButton.TOOLBOX_STYLE);
+    m_ButtonDown = new BaseFlatButton(GUIHelper.getIcon("arrow_down.gif"));
     m_ButtonDown.setFont(getFont().deriveFont(Font.PLAIN));
     m_ButtonDown.setToolTipText("Moves down selected");
     m_ButtonDown.addActionListener((ActionEvent e) -> moveDown());
     m_PanelListButtons.add(m_ButtonDown);
 
-    m_ButtonRemove = new JideButton(GUIHelper.getIcon("delete.gif"));
-    m_ButtonRemove.setButtonStyle(JideButton.TOOLBOX_STYLE);
+    m_ButtonRemove = new BaseFlatButton(GUIHelper.getIcon("delete.gif"));
     m_ButtonRemove.setFont(getFont().deriveFont(Font.PLAIN));
     m_ButtonRemove.setToolTipText("Removes currently selected");
     m_ButtonRemove.addActionListener((ActionEvent e) -> checkedRemoveSelectedPages());
     m_PanelListButtons.add(m_ButtonRemove);
 
-    m_ButtonRemoveAll = new JideButton(GUIHelper.getIcon("delete_all.gif"));
-    m_ButtonRemoveAll.setButtonStyle(JideButton.TOOLBOX_STYLE);
+    m_ButtonRemoveAll = new BaseFlatButton(GUIHelper.getIcon("delete_all.gif"));
     m_ButtonRemoveAll.setFont(getFont().deriveFont(Font.PLAIN));
     m_ButtonRemoveAll.setToolTipText("Removes all");
     m_ButtonRemoveAll.addActionListener((ActionEvent e) -> checkedRemoveAllPages());
     m_PanelListButtons.add(m_ButtonRemoveAll);
 
-    m_ButtonUndo = new JideButton(GUIHelper.getIcon("undo.gif"));
-    m_ButtonUndo.setButtonStyle(JideButton.TOOLBOX_STYLE);
+    m_ButtonUndo = new BaseFlatButton(GUIHelper.getIcon("undo.gif"));
     m_ButtonUndo.setFont(getFont().deriveFont(Font.PLAIN));
     m_ButtonUndo.setToolTipText("Undo removal");
     m_ButtonUndo.addActionListener((ActionEvent e) -> undoPageClose());
     m_PanelListButtons.add(m_ButtonUndo);
 
-    m_ButtonAction = new JideSplitButton("...");
-    m_ButtonAction.setButtonStyle(JideButton.TOOLBOX_STYLE);
+    m_ButtonAction = new BaseSplitButton("...");
     m_ButtonAction.setFont(getFont().deriveFont(Font.PLAIN));
     m_ButtonAction.setAlwaysDropdown(false);
     m_ButtonAction.setToolTipText("Additional actions");
