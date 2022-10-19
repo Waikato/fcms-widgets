@@ -27,7 +27,7 @@ Small collection of useful Java widgets and utility classes.
     (can be individually renamed, hidden/displayed)
   * `BaseDialog` - dialog with 3-part initialization (`initialize`, `initGUI`, `finishInit`),
     hook methods for show (`beforeShow`, `afterShow`) and hide (`beforeHide`, `afterHide`)
-  * `BaseDirectoryChooser` - directory chooser with bookmarks panel  
+  * `BaseDirectoryChooser` - directory chooser with bookmarks panel (based on JFileChooser)  
   * `BaseFileChooser` - file chooser with bookmarks panel
   * `BaseFrame` - frame with 3-part initialization (`initialize`, `initGUI`, `finishInit`)
   * `BasePanel` - panel with 3-part initialization (`initialize`, `initGUI`, `finishInit`)
@@ -47,6 +47,7 @@ Small collection of useful Java widgets and utility classes.
   * `PropertiesParameterPanel` - based on `ParameterPanel`, but backed by `java.util.Properties` 
     for getting/setting the parameters
   * `SetupPanel` - ancestor for panels that load/save setups from/to properties files
+  * `SimpleDirectoryChooser` - directory chooser with a more intuitive interface, similar API to JFileChooser
   
 ## Examples
 
