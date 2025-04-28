@@ -9,13 +9,14 @@
   <packaging>jar</packaging>
 
   <parent>
-    <groupId>org.sonatype.oss</groupId>
-    <artifactId>oss-parent</artifactId>
-    <version>7</version>
+    <groupId>com.github.fracpete</groupId>
+    <artifactId>central-portal-parent</artifactId>
+    <version>0.0.2</version>
   </parent>
 
   <name>fcms-widgets</name>
   <description>Small collection of useful Java widgets.</description>
+  <url>https://github.com/waikato/fcms-widgets</url>
   <organization>
     <name>University of Waikato, Hamilton, NZ</name>
     <url>http://www.waikato.ac.nz/</url>
@@ -149,20 +150,6 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
         <version>2.3.2</version>
-      </plugin>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-source-plugin</artifactId>
-        <version>2.1.2</version>
-        <executions>
-          <execution>
-            <id>attach-sources</id>
-            <goals>
-              <goal>jar</goal>
-            </goals>
-          </execution>
-        </executions>
       </plugin>
 
       <plugin>
