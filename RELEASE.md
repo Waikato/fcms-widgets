@@ -16,4 +16,3 @@ How to make a release
   ```
   
 * update Maven artifact version in [README.md](README.md#maven)
-* 
