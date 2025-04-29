@@ -15,7 +15,7 @@
 
 /*
  * JTableHelper.java
- * Copyright (C) 2005-2017 University of Waikato, Hamilton, New Zealand
+ * Copyright (C) 2005-2025 University of Waikato, Hamilton, New Zealand
  * Copyright http://fopps.sourceforge.net/
  */
 
@@ -39,7 +39,6 @@ import java.util.logging.Logger;
  * A helper class for JTable, e.g. calculating the optimal colwidth.
  *
  * @author FracPete (fracpete at waikato dot ac dot nz)
- * @version $Revision: 14842 $
  */
 public class JTableHelper {
 
@@ -299,13 +298,15 @@ public class JTableHelper {
 
   /**
    * sets the optimal column width for all columns.
+   *
+   * @param max         the column width limit, -1 for unlimited
    */
   public void setOptimalColumnWidthBounded(int max) {
     setOptimalColumnWidthBounded(getJTable(), max);
   }
 
   /**
-   * sets the optimal column width for alls column if the given table.
+   * sets the optimal column width for all columns if the given table.
    *
    * @param table	the table to work on
    */
@@ -314,9 +315,10 @@ public class JTableHelper {
   }
 
   /**
-   * sets the optimal column width for alls column if the given table.
+   * sets the optimal column width for all columns if the given table.
    *
    * @param table	the table to work on
+   * @param max         the column width limit, -1 for unlimited
    */
   public static void setOptimalColumnWidthBounded(JTable table, int max) {
     int		i;
@@ -387,7 +389,7 @@ public class JTableHelper {
   }
 
   /**
-   * sets the optimal header width for alls column if the given table.
+   * sets the optimal header width for all columns if the given table.
    *
    * @param table	the table to work with
    */

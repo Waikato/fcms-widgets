@@ -13,9 +13,9 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/**
+/*
  * PopupMenuProvider.java
- * Copyright (C) 2016 University of Waikato, Hamilton, New Zealand
+ * Copyright (C) 2016-2025 University of Waikato, Hamilton, New Zealand
  */
 package nz.ac.waikato.cms.gui.core;
 
@@ -25,12 +25,13 @@ import javax.swing.JPopupMenu;
  * Interface for classes that offer a popup menu.
  *
  * @author FracPete (fracpete at waikato dot ac dot nz)
- * @version $Revision$
  */
 public interface PopupMenuProvider {
 
   /**
    * Returns the popup menu.
+   *
+   * @return 		the menu
    */
   public JPopupMenu getPopupMenu();
 }

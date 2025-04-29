@@ -15,7 +15,7 @@
 
 /*
  * ParameterPanel.java
- * Copyright (C) 2010-2017 University of Waikato, Hamilton, New Zealand
+ * Copyright (C) 2010-2025 University of Waikato, Hamilton, New Zealand
  */
 package nz.ac.waikato.cms.gui.core;
 
@@ -286,6 +286,7 @@ public class ParameterPanel
   /**
    * Adds the chooser panel at the end. Cannot be used if checkboxes used.
    *
+   * @param checked	whether the checkbox is checked
    * @param chooser	the chooser panel to add
    * @return		the index of the parameter
    * @see		#useCheckBoxes()

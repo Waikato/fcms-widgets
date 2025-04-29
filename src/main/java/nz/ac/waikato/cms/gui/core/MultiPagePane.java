@@ -15,7 +15,7 @@
 
 /*
  * MultiPagePane.java
- * Copyright (C) 2018-2022 University of Waikato, Hamilton, NZ
+ * Copyright (C) 2018-2025 University of Waikato, Hamilton, NZ
  */
 
 package nz.ac.waikato.cms.gui.core;
@@ -232,6 +232,7 @@ public class MultiPagePane
      *
      * @param source 	the origin of the closing operation
      * @param index	the page that is to be closed
+     * @return 		true if approved
      */
     public boolean approvePageClosing(MultiPagePane source, int index);
   }
@@ -1420,7 +1421,7 @@ public class MultiPagePane
   /**
    * Sets the maximum pages to keep around for undoing closing.
    *
-   * @param value	the maximum, <1 turned off
+   * @param value	the maximum, &lt;1 turned off
    */
   public void setMaxPageCloseUndo(int value) {
     m_MaxPageCloseUndo = value;
@@ -1430,7 +1431,7 @@ public class MultiPagePane
   /**
    * Returns the maximum pages to keep around for undoing closing.
    *
-   * @return		the maximum, <1 turned off
+   * @return		the maximum, &lt;1 turned off
    */
   public int getMaxPageCloseUndo() {
     return m_MaxPageCloseUndo;

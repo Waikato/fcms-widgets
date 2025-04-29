@@ -15,7 +15,7 @@
 
 /*
  * ApprovalDialog.java
- * Copyright (C) 2011-2014 University of Waikato, Hamilton, New Zealand
+ * Copyright (C) 2011-2025 University of Waikato, Hamilton, New Zealand
  */
 
 package nz.ac.waikato.cms.gui.core;
@@ -433,6 +433,7 @@ public class ApprovalDialog
    * Returns a basic (modal) approval dialog (ok/cancel).
    *
    * @param owner	the owner of the dialog
+   * @return 		the dialog
    */
   public static ApprovalDialog getDialog(Dialog owner) {
     return getDialog(owner, ModalityType.DOCUMENT_MODAL);
@@ -443,6 +444,7 @@ public class ApprovalDialog
    *
    * @param owner	the owner of the dialog
    * @param modal	the modality of the dialog
+   * @return 		the dialog
    */
   public static ApprovalDialog getDialog(Dialog owner, ModalityType modal) {
     return new ApprovalDialog(owner, modal);
@@ -452,6 +454,7 @@ public class ApprovalDialog
    * Returns a basic (modal) approval dialog (ok/cancel).
    *
    * @param owner	the owner of the dialog
+   * @return 		the dialog
    */
   public static ApprovalDialog getDialog(Frame owner) {
     return getDialog(owner, true);
@@ -462,6 +465,7 @@ public class ApprovalDialog
    *
    * @param owner	the owner of the dialog
    * @param modal	whether to create a modal frame
+   * @return 		the dialog
    */
   public static ApprovalDialog getDialog(Frame owner, boolean modal) {
     return new ApprovalDialog(owner, modal);
@@ -471,6 +475,7 @@ public class ApprovalDialog
    * Returns a basic (modal) confirmation dialog (yes/no/cancel).
    *
    * @param owner	the owner of the dialog
+   * @return 		the dialog
    */
   public static ApprovalDialog getConfirmationDialog(Dialog owner) {
     return getConfirmationDialog(owner, ModalityType.DOCUMENT_MODAL);
@@ -481,6 +486,7 @@ public class ApprovalDialog
    *
    * @param owner	the owner of the dialog
    * @param modal	the modality of the dialog
+   * @return 		the dialog
    */
   public static ApprovalDialog getConfirmationDialog(Dialog owner, ModalityType modal) {
     ApprovalDialog	result;
@@ -499,6 +505,7 @@ public class ApprovalDialog
    * Returns a basic (modal) confirmation dialog (yes/no/cancel).
    *
    * @param owner	the owner of the dialog
+   * @return 		the dialog
    */
   public static ApprovalDialog getConfirmationDialog(Frame owner) {
     return getConfirmationDialog(owner, true);
@@ -509,6 +516,7 @@ public class ApprovalDialog
    *
    * @param owner	the owner of the dialog
    * @param modal	whether to create a modal dialog
+   * @return 		the dialog
    */
   public static ApprovalDialog getConfirmationDialog(Frame owner, boolean modal) {
     ApprovalDialog	result;
@@ -527,6 +535,7 @@ public class ApprovalDialog
    * Returns a basic (modal) info dialog (ok).
    *
    * @param owner	the owner of the dialog
+   * @return 		the dialog
    */
   public static ApprovalDialog getInformationDialog(Dialog owner) {
     return getInformationDialog(owner, ModalityType.DOCUMENT_MODAL);
@@ -537,6 +546,7 @@ public class ApprovalDialog
    *
    * @param owner	the owner of the dialog
    * @param modal	the modality of the dialog
+   * @return 		the dialog
    */
   public static ApprovalDialog getInformationDialog(Dialog owner, ModalityType modal) {
     ApprovalDialog	result;
@@ -553,6 +563,7 @@ public class ApprovalDialog
    * Returns a basic (modal) info dialog (ok).
    *
    * @param owner	the owner of the dialog
+   * @return 		the dialog
    */
   public static ApprovalDialog getInformationDialog(Frame owner) {
     return getInformationDialog(owner, true);
@@ -563,6 +574,7 @@ public class ApprovalDialog
    *
    * @param owner	the owner of the dialog
    * @param modal	whether to create a modal dialog
+   * @return 		the dialog
    */
   public static ApprovalDialog getInformationDialog(Frame owner, boolean modal) {
     ApprovalDialog	result;

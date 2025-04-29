@@ -15,7 +15,7 @@
 
 /*
  * Utils.java
- * Copyright (C) 2008-2015 University of Waikato, Hamilton, New Zealand
+ * Copyright (C) 2008-2025 University of Waikato, Hamilton, New Zealand
  */
 
 package nz.ac.waikato.cms.core;
@@ -33,9 +33,7 @@ import java.util.List;
  * @author Yong Wang
  * @author Len Trigg
  * @author Julien Prados
- * @author FracPete (fracpete at waikat dot ac dot nz)
- * @version $Revision: 10906 $
- * @see weka.core.Utils
+ * @author FracPete (fracpete at waikato dot ac dot nz)
  */
 public class Utils {
 
@@ -226,6 +224,7 @@ public class Utils {
    * E.g., newArray("java.lang.Double[]", 5) will generate "Double[5][]".
    *
    * @param elementClass	the class type for the array elements
+   * @param length 		the length of the array
    * @return			the generated array instance, null if failed to create
    */
   public static Object newArray(String elementClass, int length) {
@@ -385,7 +384,7 @@ public class Utils {
    * Returns the stacktrace of the throwable as string.
    *
    * @param t		the throwable to get the stacktrace for
-   * @param maxLines	the maximum number of lines to print, <= 0 for all
+   * @param maxLines	the maximum number of lines to print, &lt;= 0 for all
    * @return		the stacktrace
    */
   public static String throwableToString(Throwable t, int maxLines) {
@@ -416,7 +415,7 @@ public class Utils {
   /**
    * Returns the current stack trace.
    *
-   * @param maxDepth	the maximum depth of the stack trace, <= 0 for full trace
+   * @param maxDepth	the maximum depth of the stack trace, &lt;= 0 for full trace
    * @return		the stack trace as string (multiple lines)
    */
   public static String getStackTrace(int maxDepth) {

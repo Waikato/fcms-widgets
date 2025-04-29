@@ -15,7 +15,7 @@
 
 /*
  * AbstractSelectorPanel.java
- * Copyright (C) 2010-2016 University of Waikato, Hamilton, New Zealand
+ * Copyright (C) 2010-2025 University of Waikato, Hamilton, New Zealand
  */
 
 package nz.ac.waikato.cms.gui.core;
@@ -48,7 +48,6 @@ import java.util.Iterator;
  * button for bringing up a dialog offering the choice.
  *
  * @author  fracpete (fracpete at waikato dot ac dot nz)
- * @version $Revision: 15192 $
  * @param <T> the type of object to handle
  */
 public abstract class AbstractChooserPanel<T>
@@ -559,7 +558,7 @@ public abstract class AbstractChooserPanel<T>
   /**
    * Sets the number of columns for the text field.
    *
-   * @param value	the number of columns (>0)
+   * @param value	the number of columns (&gt;0)
    */
   public void setTextColumns(int value) {
     if (value > 0)
@@ -573,7 +572,7 @@ public abstract class AbstractChooserPanel<T>
   /**
    * Returns the number of columns of the text field.
    *
-   * @return		the number of columns (>0)
+   * @return		the number of columns (&gt;0)
    */
   public int getTextColumns() {
     return m_TextSelection.getColumns();
